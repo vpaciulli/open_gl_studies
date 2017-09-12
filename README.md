@@ -1,1 +1,1 @@
-# open_gl_studies
+## Studies collection in OpenGL
