@@ -1,6 +1,7 @@
 #include <GLUT/GLUT.h>
 
 GLfloat angle, fAspect;
+//TODO: Improve control flow for solid/wireframe changes. Made on a hurry.
 int shapeNumber = 0;
 int inView = 0;
 
@@ -54,45 +55,39 @@ void CheckAndDrawSolid (int n) {
   }
 }
 
-void CheckAndDraw (int n) {
-  if(n == 0) {
-    glColor3f(0.0f, 0.0f, 1.0f);
-    glutWireCube(50.0f);
-    return;
+void CheckAndDraw (int shapeNumber) {
+  switch (shapeNumber) {
+    case 0:
+      glColor3f(0.0f, 0.0f, 1.0f);
+      glutWireCube(50.0f);
+      break;
+    case 1:
+      glColor3f(0.0f, 0.0f, 1.0f);
+      glutWireTeapot(50.0f);
+      break;
+    case 2:
+      glColor3f(1.0f, 0.0f, 1.0f);
+      glutWireSphere(50, 50, 50);
+      break;
+
+    case 3:
+      glColor3f(1.0f, 1.0f, 0.0f);
+      glutWireTorus (25.0 ,50.0, 10.0, 15.0);
+      break;
+
+    case 4:
+      glColor3f(1.0f, 0.0f, 0.0f);
+      glutWireCube(50.0f);
+    break;
+
+    case 5:
+      CheckAndDrawWireframe(inView);
+    break;
+
+    case 6:
+      CheckAndDrawSolid(inView);
+    break;
   }
-
-  if(n == 1) {
-    glColor3f(0.0f, 0.0f, 1.0f);
-    glutWireTeapot(50.0f);
-    return;
-  }
-
-  if(n == 2) {
-    glColor3f(1.0f, 0.0f, 1.0f);
-    glutWireSphere(50, 50, 50);
-    return;
-  }
-
-  if(n == 3) {
-    glColor3f(1.0f, 1.0f, 0.0f);
-    glutWireTorus (25.0 ,50.0, 10.0, 15.0);
-    return;
-  }
-
-  if(n == 4) {
-    glColor3f(1.0f, 0.0f, 0.0f);
-    glutWireCube(50.0f);
-    return;
-  }
-
-  if(n == 5) {
-    CheckAndDrawWireframe(inView);
-    return;
-  }
-
-  if(n != 6) return;
-
-  CheckAndDrawSolid(inView);
 }
 
 void Draw(void) {
