@@ -78,15 +78,15 @@ void CheckAndDraw (int shapeNumber) {
     case 4:
       glColor3f(1.0f, 0.0f, 0.0f);
       glutWireCube(50.0f);
-    break;
+      break;
 
     case 5:
       CheckAndDrawWireframe(inView);
-    break;
+      break;
 
     case 6:
       CheckAndDrawSolid(inView);
-    break;
+      break;
   }
 }
 
